@@ -1,0 +1,7 @@
+ion-toolbar:last-child {
+  --border-width: 0 0 0;
+}
+
+ion-header::after {
+  display: none !important;
+} 

@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Mi agenda</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar" [(ngModel)]="filterValue"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center">
+    <ion-button fill="clear" mode="ios" (click)="openModalForm()">
+      <ion-icon name="person-add-outline" slot="start"></ion-icon>
+      <span>Crear contacto nuevo</span>
+    </ion-button>
+  </div>
+
+  <ion-list>
+    <ion-item color="transparent" lines="none">
+      <ion-note color="medium">Selecciona un registro para ver su detalle, editarlo o eliminarlo</ion-note>
+    </ion-item>
+
+    <ion-item *ngFor="let item of data | orderBy: 'nombre' | filter: filterValue:'nombre'" (click)="openModalDetail(item)">
+      <ion-avatar slot="start">
+        <img [src]="item?.imagen" />
+      </ion-avatar>
+      <ion-label>
+        {{item.nombre}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
